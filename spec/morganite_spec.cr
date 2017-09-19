@@ -8,7 +8,7 @@ describe Morganite do
     tag.should eq("<div></div>")
   end
 
-  it "builds tags with attributes" do
+  it "builds tags with an attribute" do
     m = Morganite::Morganite.new
 
     tag = m.div class: "foo"
@@ -33,9 +33,16 @@ describe Morganite do
     m = Morganite::Morganite.new
 
     tag = m.div {
-      [ m.div { "hello" } ,
-        m.div { "world" } ].join
+      [m.div { "hello" },
+       m.div { "world" }].join
     }
     tag.should eq("<div><div>hello</div><div>world</div></div>")
+  end
+
+  it "builds tags with multiple attributes" do
+    m = Morganite::Morganite.new
+
+    tag = m.div id: "foo", class: "bar", style: "baz" { "hello" }
+    tag.should eq("<div id=\"foo\" class=\"bar\" style=\"baz\">hello</div>")
   end
 end
