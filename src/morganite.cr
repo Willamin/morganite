@@ -1,7 +1,6 @@
 require "./morganite/*"
 
 module Morganite
-
   macro included
     Morganite::Morganite.new
   end
@@ -32,6 +31,14 @@ module Morganite
 
       o << "</#{name}>"
       o.join
+    end
+
+    def title(title_text)
+      title { title_text }
+    end
+
+    def stylesheet(href)
+      link(rel: "stylesheet", href: href)
     end
   end
 end
