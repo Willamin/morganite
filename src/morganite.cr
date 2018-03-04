@@ -32,7 +32,9 @@ module Morganite
       o << "</#{name}>"
       o.join
     end
+  end
 
+  module Extras
     def title(title_text)
       title { title_text }
     end
