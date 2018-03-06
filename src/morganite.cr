@@ -6,8 +6,6 @@ module Morganite
   end
 
   class Morganite
-    include Morganite::Extras
-
     macro method_missing(call)
       def {{call.name.id}}(**args)
         tag({{call.name.id.stringify}}, **args) {% if call.block %} {{call.block}} {% else %} {} {% end %}
