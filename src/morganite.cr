@@ -16,11 +16,11 @@ module Morganite
       end
     end
 
-    def tag(name, **args, &block)
+    def tag(tag_name, **args, &block)
       o = [] of String
 
       open_tag = [] of String
-      open_tag << "#{name}"
+      open_tag << "#{tag_name}"
 
       args.each do |i, j|
         open_tag << "#{i}=\"#{j}\""
@@ -33,7 +33,7 @@ module Morganite
       b = yield
       o << b if b
 
-      o << "</#{name}>"
+      o << "</#{tag_name}>"
       o.join
     end
   end
